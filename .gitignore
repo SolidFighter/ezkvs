@@ -1,0 +1,6 @@
+*.beam
+*.jpg
+Mnesia*/
+ebin
+.rebar
+deps
