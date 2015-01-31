@@ -4,3 +4,4 @@ Mnesia*/
 ebin
 .rebar
 deps
+test_db
