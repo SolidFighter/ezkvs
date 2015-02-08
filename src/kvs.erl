@@ -1,7 +1,7 @@
 -module(kvs).
 %% gen_server_mini_template
 -behaviour(gen_server).
--export([start_link/0]).
+-export([start/0]).
 %% gen_server callbacks
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2,
 	terminate/2, code_change/3]).
@@ -10,7 +10,11 @@
 -export([put/2, get/1, delete/1]).
 -define(SERVER, ?MODULE).
 
-start_link() -> gen_server:start_link({local, ?SERVER}, ?MODULE, [], []).
+start() -> 
+  gen_server:start_link({local, ?SERVER}, ?MODULE, [], []),
+  kvs_net:start().
+
+
 init([]) -> 
   %% Note we must set trap_exit = true if we 
   %% want terminate/2 to be called when the application
